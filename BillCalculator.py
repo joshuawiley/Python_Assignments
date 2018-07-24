@@ -1,3 +1,5 @@
+# Author: Joshua Wiley
+# Title:  Electric Bill Calculator
 
 # Check if the beginning of the month reading is greater then the second reading
 def validReading(FirstReading,SecondReading):
