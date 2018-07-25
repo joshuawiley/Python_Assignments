@@ -20,9 +20,17 @@ plt.axhline(y=0)
 plt.axvline(x=0)
 
 # plt.plot(ms, X_Axis, "g")
-plt.plot(ms, X_Axis, 'r', ms, Y_Axis, 'g')
+plt.plot(ms, X_Axis, 'r', ms, Y_Axis, 'g', ms, Z_Axis, 'b')
 plt.minorticks_on()
-# plt.axis('tight')
+plt.title('Sleep Tracking ----- Speed vs Time ')
+plt.legend((' = X',' = Y',' = Z'))
 plt.show()
 # Print out Sensors
-print(X_Axis)
+minX = min(X_Axis)
+maxX = max(X_Axis)
+
+minY = min(Y_Axis)
+maxY = max(Y_Axis)
+
+minY = min(Y_Axis)
+maxY = max(Y_Axis)
