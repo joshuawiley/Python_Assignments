@@ -1,17 +1,17 @@
 # Import pandas as pd
-import math
 import pandas as pd
 import matplotlib.pyplot as plt
+import statistics
 
-# Import the AndroSensor.csv data: Sensors
-data = pd.read_csv('AndroSensor.csv', sep=',')
+# Import the AndroSensor.csv DATA: Sensors
+DATA = pd.read_csv('AndroSensor.csv', sep=',')
 
-X_Axis = data['X']
-Y_Axis = data['Y']
-Z_Axis = data['Z']
+X_AXIS = DATA['X']
+Y_AXIS = DATA['Y']
+Z_AXIS = DATA['Z']
 
-ms = data['ms']
-date = data['Date']
+MS = DATA['ms']
+DATE = DATA['Date']
 
 # Draw a default hline at y=1 that spans the xrange
 plt.axhline(y=0)
@@ -19,33 +19,41 @@ plt.axhline(y=0)
 # Draw a default vline at x=1 that spans the yrange
 plt.axvline(x=0)
 
-plt.plot(ms, X_Axis, 'r', ms, Y_Axis, 'g', ms, Z_Axis, 'b')
+plt.plot(MS, X_AXIS, 'r', MS, Y_AXIS, 'g', MS, Z_AXIS, 'b')
 plt.minorticks_on()
 plt.title('Sleep Tracking ----- Movement vs Time ')
-plt.legend((' = X',' = Y',' = Z'))
+plt.legend((' = X', ' = Y', ' = Z'))
 plt.show()
 # Print out Sensors
-minX = min(X_Axis)
-maxX = max(X_Axis)
+MINX = min(X_AXIS)
+MAXX = max(X_AXIS)
+AVGX = statistics.mean(X_AXIS)
 
-minY = min(Y_Axis)
-maxY = max(Y_Axis)
+MINY = min(Y_AXIS)
+MAXY = max(Y_AXIS)
+AVGY = statistics.mean(Y_AXIS)
 
-minZ = min(Z_Axis)
-maxZ = max(Z_Axis)
+MINZ = min(Z_AXIS)
+MAXZ = max(Z_AXIS)
+AVGZ = statistics.mean(Z_AXIS)
 
-print('\n-----------------------------')
-print('The min of the X Axis is %s.' % minX)
-print('The max of the X Axis is %s.' % maxX)
-print('\nThe min of the Y Axis is %s.' % minY)
-print('The max of the Y Axis is %s.' % maxY)
-print('\nThe min of the Z Axis is %s.' % minZ)
-print('The max of the Z Axis is %s.' % maxZ)
+print('\n-----------------------------------')
+print('The min of the X Axis is %s.' % MINX)
+print('The max of the X Axis is %s.' % MAXX)
+print('The average of the X Axis is %.2f.' % AVGX)
 
-seconds = ms / 1000
-minSec = float(min(seconds))
-maxSec = float(max(seconds))
+print('\nThe min of the Y Axis is %s.' % MINY)
+print('The max of the Y Axis is %s.' % MAXY)
+print('The average of the Y Axis is %.2f.' % AVGY)
 
-print('\n*****************************')
-print('The min time is %.2f' % minSec)
-print('The max time is %.2f' % maxSec)
+print('\nThe min of the Z Axis is %s.' % MINZ)
+print('The max of the Z Axis is %s.' % MAXZ)
+print('The average of the Z Axis is %.2f.' % AVGZ)
+
+SECONDS = MS / 1000
+MINSEC = float(min(SECONDS))
+MAXSEC = float(max(SECONDS))
+
+print('\n**********************************')
+print('The min time is %.2f' % MINSEC)
+print('The max time is %.2f' % MAXSEC)
