@@ -5,4 +5,4 @@ import pandas as pd
 data = pd.read_csv('AndroSensor.csv', sep=',')
 
 # Print out Sensors
-print(data)
+# print(data)
