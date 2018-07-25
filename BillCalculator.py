@@ -1,8 +1,11 @@
 # Author: Joshua Wiley
 # Title:  Electric Bill Calculator
 
-# Check if the beginning of the month reading is greater then the second reading
-def validReading(FirstReading,SecondReading):
+# Check if the beginning of the month reading is
+# greater then the second reading
+
+
+def validReading(FirstReading, SecondReading):
     while FirstReading >= SecondReading:
         print("First input cannot be the same as the second!\n")
         FirstReading = float(input("Enter Your Beginning of Month KwH Used: "))
@@ -12,11 +15,11 @@ def validReading(FirstReading,SecondReading):
 
 
 # Calculate the Monthly bill
-def calculateBill(firstReading,secondReading):
+def calculateBill(firstReading, secondReading):
     # RATE1, RATE2, RATE3 = 0.08, 0.11, 0.15
 
     kwh = float(secondReading - firstReading)
-    
+
     if kwh < 500:
         rate = 0.08
     elif kwh <= 500 or kwh < 1500:
@@ -30,6 +33,7 @@ def calculateBill(firstReading,secondReading):
 
     return bill
 
+
 # Main
 list_customers = {}
 while True:
@@ -41,20 +45,18 @@ while True:
     print("E/e = Exit\n")
 
     commandInput = input("Enter a command: ")
-    
     if commandInput in 'n' or commandInput in 'N':
         customerID = input("Enter your 4 digit customer ID: ")
         fRead = float(input("Enter Your Beginning of Month KwH Used: "))
         sRead = float(input("Enter Your End of Month KwH Used: "))
-        
+
         # Return values
-        valid, fRead, sRead = validReading(fRead,sRead)
+        valid, fRead, sRead = validReading(fRead, sRead)
 
-        if valid == True:
-            balance = calculateBill(fRead,sRead)
-            print("Your balance is $%.2d." %balance)
-        list_customers = {customerID : balance}
-
+        if valid is True:
+            balance = float(calculateBill(fRead, sRead))
+            print("Your balance is $%.2f." % balance)
+        list_customers = {customerID: balance}
     elif commandInput in 'l' or commandInput in 'L':
         customerID = input("Enter your 4 digit customer ID: ")
         if customerID not in list_customers:
@@ -77,17 +79,16 @@ while True:
         list_customers[customerID] = list_customers[temp]
         # Delete the old ID
         del list_customers[temp]
-        print("Customer ID %s has been updated to %s." %(temp,customerID))
+        print("Customer ID %s has been updated to %s." % (temp, customerID))
     elif commandInput in 'a' or commandInput in 'A':
         customerID = input("Enter your 4 digit customer ID: ")
         fRead = float(input("Enter Your New Beginning of Month KwH Used: "))
         sRead = float(input("Enter Your New End of Month KwH Used: "))
-        
+
         # Return values
-        if valid == True:
-            balance = calculateBill(fRead,sRead)
-            print("Your balance is $%.2d." %balance)
-        list_customers = {customerID : balance}
+        if valid is True:
+            balance = calculateBill(fRead, sRead)
+            print("Your balance is $%.2f." % balance)
+        list_customers = {customerID: balance}
     elif commandInput in 'e' or commandInput in 'E':
         exit()
-
