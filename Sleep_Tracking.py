@@ -14,7 +14,7 @@ ms = data['ms']
 date = data['Date']
 
 # Draw a default hline at y=1 that spans the xrange
-plt.axhline(y=1)
+plt.axhline(y=0)
 
 # Draw a default vline at x=1 that spans the yrange
 plt.axvline(x=0)
