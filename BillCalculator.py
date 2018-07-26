@@ -19,7 +19,6 @@ def valid_reading(first_reading, second_reading):
 # Calculate the Monthly bill
 def calculate_bill(reading_one, reading_two):
     # RATE1, RATE2, RATE3 = 0.08, 0.11, 0.15
-
     kwh = float(reading_two - reading_one)
 
     if kwh < 500:
@@ -27,7 +26,7 @@ def calculate_bill(reading_one, reading_two):
     elif kwh <= 500 or kwh < 1500:
         rate = 0.11
     elif kwh >= 1500:
-        kwh = 0.15
+        rate = 0.15
     else:
         rate = 0.20
 
