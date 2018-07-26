@@ -8,4 +8,4 @@ install:
   - pip install statistics
 # command to run tests
 script:
-  - python3 Sleep_Tracking.py
+  - python3 BillCalculator.py
