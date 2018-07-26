@@ -9,5 +9,5 @@ install:
   - pip install pycodestyle
 # command to run tests
 script:
-  - pycodestyle BillCalculator.py
+  - pycodestyle bill_calculator.py
   - python bill_calculator.py < commands.txt
