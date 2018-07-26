@@ -44,6 +44,8 @@ while True:
     print("A/a = Add New Bill")
     print("E/e = Exit\n")
 
+    print(list_customers)
+
     commandInput = input("Enter a command: ")
     if commandInput in 'n' or commandInput in 'N':
         customerID = input("Enter your 4 digit customer ID: ")
@@ -56,7 +58,7 @@ while True:
         if valid is True:
             balance = float(calculateBill(fRead, sRead))
             print("Your balance is $%.2f." % balance)
-        list_customers = {customerID: balance}
+        list_customers[customerID] = balance
     elif commandInput in 'l' or commandInput in 'L':
         customerID = input("Enter your 4 digit customer ID: ")
         if customerID not in list_customers:
@@ -89,6 +91,6 @@ while True:
         if valid is True:
             balance = calculateBill(fRead, sRead)
             print("Your balance is $%.2f." % balance)
-        list_customers = {customerID: balance}
+        list_customers[customerID] = balance
     elif commandInput in 'e' or commandInput in 'E':
         exit()
