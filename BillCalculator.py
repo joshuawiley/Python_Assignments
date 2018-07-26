@@ -5,17 +5,17 @@
 # greater then the second reading
 
 
-def validReading(FirstReading, SecondReading):
-    while FirstReading >= SecondReading:
+def valid_reading(first_reading, second_reading):
+    while first_reading >= second_reading:
         print("First input cannot be the same as the second!\n")
-        FirstReading = float(input("Enter Your Beginning of Month KwH Used: "))
-        SecondReading = float(input("Enter Your End of Month KwH Used: "))
+        first_reading = float(input("Enter Your Beginning of Month KwH Used: "))
+        second_reading = float(input("Enter Your End of Month KwH Used: "))
 
-    return True, FirstReading, SecondReading
+    return True, first_reading, second_reading
 
 
 # Calculate the Monthly bill
-def calculateBill(firstReading, secondReading):
+def calculate_bill(firstReading, secondReading):
     # RATE1, RATE2, RATE3 = 0.08, 0.11, 0.15
 
     kwh = float(secondReading - firstReading)
@@ -34,15 +34,15 @@ def calculateBill(firstReading, secondReading):
     return bill
 
 with open('commands.txt', 'r') as f:
-    lines = f.read().splitlines()
+    LINES = f.read().splitlines()
 
 
-def get_info(lines, line_num):
-    line = lines[line_num]
+def get_info(oneline, line_num):
+    line = oneline[line_num]
     return line.split(' | ')
 
 # Main
-list_customers = {}
+LIST_CUSTOMERS = {}
 while True:
     print("\nN/n = New User")
     print("L/l = Lookup User")
@@ -51,12 +51,11 @@ while True:
     print("A/a = Add New Bill")
     print("E/e = Exit\n")
 
-    x = len(lines)
-    for x in range(0, x):
-        COMMANDINPUT, ID, VALUE1, VALUE2 = get_info(lines, x)
+
+    for x in range(0, len(LINES)):
+        COMMANDINPUT, ID, VALUE1, VALUE2 = get_info(LINES, x)
 
         print(COMMANDINPUT)
-        print(list_customers)
 
         if COMMANDINPUT in 'n' or COMMANDINPUT in 'N':
             customerID = ID
@@ -64,24 +63,22 @@ while True:
             sRead = float(VALUE2)
 
             # Return values
-            valid, fRead, sRead = validReading(fRead, sRead)
+            valid, fRead, sRead = valid_reading(fRead, sRead)
 
             if valid is True:
-                balance = float(calculateBill(fRead, sRead))
+                balance = float(calculate_bill(fRead, sRead))
                 print("Your user %s balance is $%.2f." % (ID, balance))
-            list_customers[customerID] = balance
+            LIST_CUSTOMERS[customerID] = balance
         elif COMMANDINPUT in 'l' or COMMANDINPUT in 'L':
             customerID = ID
-            if customerID not in list_customers:
+            if customerID not in LIST_CUSTOMERS:
                 print("\nThe Customer ID %s is not in the database."
                       % customerID)
             else:
-                for customerID in list_customers:
-                    print(list_customers[customerID])
+                print('%s your balance is %.2f' % (ID, LIST_CUSTOMERS[customerID]))
         elif COMMANDINPUT in 'd' or COMMANDINPUT in 'D':
-            print(list_customers[ID])
             customerID = ID
-            del list_customers[customerID]
+            del LIST_CUSTOMERS[customerID]
             print("Customer %s has been removed from the database."
                   % customerID)
         elif COMMANDINPUT in 'u' or COMMANDINPUT in 'U':
@@ -92,9 +89,9 @@ while True:
             # Get new ID
             customerID = VALUE1
             # Set the new ID with the old ID's value
-            list_customers[customerID] = list_customers[temp]
+            LIST_CUSTOMERS[customerID] = LIST_CUSTOMERS[temp]
             # Delete the old ID
-            del list_customers[temp]
+            del LIST_CUSTOMERS[temp]
             print("Customer ID %s has been updated to %s."
                   % (temp, customerID))
         elif COMMANDINPUT in 'a' or COMMANDINPUT in 'A':
@@ -103,9 +100,9 @@ while True:
 
             # Return values
             if valid is True:
-                balance = calculateBill(fRead, sRead)
+                balance = calculate_bill(fRead, sRead)
                 print("Your user %s balance is $%.2f." % (ID, balance))
-            list_customers[ID] = balance
+            LIST_CUSTOMERS[ID] = balance
         elif COMMANDINPUT in 'e' or COMMANDINPUT in 'E':
             f.close()
             exit()
