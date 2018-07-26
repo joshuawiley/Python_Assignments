@@ -6,6 +6,8 @@ install:
   - pip install pandas
   - pip install matplotlib
   - pip install statistics
+  - pip install pycodestyle
 # command to run tests
 script:
+  - pycodestyle
   - python BillCalculator.py < commands.txt
