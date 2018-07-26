@@ -102,4 +102,5 @@ while True:
             print("Your balance is $%.2f." % BALANCE)
         LIST_CUSTOMERS[CUSTOMER_ID] = BALANCE
     elif COMMANDINPUT in 'e' or COMMANDINPUT in 'E':
+        print("Exit...")
         exit()
