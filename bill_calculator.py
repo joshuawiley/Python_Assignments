@@ -68,7 +68,7 @@ while True:
         if CUSTOMER_ID not in LIST_CUSTOMERS:
             print("\nThe Customer ID %s is not in the database." % CUSTOMER_ID)
         else:
-            print(LIST_CUSTOMERS[CUSTOMER_ID])
+            print('Customer Balance is %.2f' % LIST_CUSTOMERS[CUSTOMER_ID])
     elif COMMANDINPUT in 'd' or COMMANDINPUT in 'D':
         CUSTOMER_ID = input("Enter your 4 digit customer ID: ")
         print(CUSTOMER_ID)
