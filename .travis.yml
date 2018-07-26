@@ -10,4 +10,4 @@ install:
 # command to run tests
 script:
   - pycodestyle BillCalculator.py
-  - python BillCalculator.py < commands.txt
+  - python bill_calculator.py < commands.txt
