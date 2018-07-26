@@ -46,7 +46,6 @@ while True:
     print("A/a = Add New Bill")
     print("E/e = Exit\n")
 
-    
     commandInput = input("\nEnter a command: ")
     print(commandInput)
     if commandInput in 'n' or commandInput in 'N':
