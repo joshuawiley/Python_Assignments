@@ -4,7 +4,7 @@
 # Check if the beginning of the month reading is
 # greater then the second reading
 
-
+    
 def validReading(FirstReading, SecondReading):
     while FirstReading >= SecondReading:
         print("First input cannot be the same as the second!\n")
