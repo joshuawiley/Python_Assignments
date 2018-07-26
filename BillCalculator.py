@@ -44,23 +44,22 @@ while True:
     print("A/a = Add New Bill")
     print("E/e = Exit\n")
 
-    print(list_customers)
-
-    commandInput = input("Enter a command: ")
+    
+    commandInput = input("\nEnter a command: ")
     if commandInput in 'n' or commandInput in 'N':
-        customerID = input("Enter your 4 digit customer ID: ")
-        fRead = float(input("Enter Your Beginning of Month KwH Used: "))
-        sRead = float(input("Enter Your End of Month KwH Used: "))
+        customerID = input("\nEnter your 4 digit customer ID: ")
+        fRead = float(input("\nEnter Your Beginning of Month KwH Used: "))
+        sRead = float(input("\nEnter Your End of Month KwH Used: "))
 
         # Return values
         valid, fRead, sRead = validReading(fRead, sRead)
 
         if valid is True:
             balance = float(calculateBill(fRead, sRead))
-            print("Your balance is $%.2f." % balance)
+            print("\nYour balance is $%.2f." % balance)
         list_customers[customerID] = balance
     elif commandInput in 'l' or commandInput in 'L':
-        customerID = input("Enter your 4 digit customer ID: ")
+        customerID = input("\nEnter your 4 digit customer ID: ")
         if customerID not in list_customers:
             print("\nThe Customer ID %s is not in the database." % customerID)
         else:
@@ -69,28 +68,28 @@ while True:
     elif commandInput in 'd' or commandInput in 'D':
         customerID = input("\nEnter your 4 digit customer ID: ")
         del list_customers[customerID]
-        print("Customer %s has been removed from the database." % customerID)
+        print("\nCustomer %s has been removed from the database." % customerID)
     elif commandInput in 'u' or commandInput in 'U':
         # Enter current
         customerID = input("\nEnter your current ID: ")
         # Create a temp ID to store original ID
         temp = customerID
         # Get new ID
-        customerID = input("Enter your new ID: ")
+        customerID = input("\nEnter your new ID: ")
         # Set the new ID with the old ID's value
         list_customers[customerID] = list_customers[temp]
         # Delete the old ID
         del list_customers[temp]
-        print("Customer ID %s has been updated to %s." % (temp, customerID))
+        print("\nCustomer ID %s has been updated to %s." % (temp, customerID))
     elif commandInput in 'a' or commandInput in 'A':
-        customerID = input("Enter your 4 digit customer ID: ")
-        fRead = float(input("Enter Your New Beginning of Month KwH Used: "))
-        sRead = float(input("Enter Your New End of Month KwH Used: "))
+        customerID = input("\nEnter your 4 digit customer ID: ")
+        fRead = float(input("\nEnter Your New Beginning of Month KwH Used: "))
+        sRead = float(input("\nEnter Your New End of Month KwH Used: "))
 
         # Return values
         if valid is True:
             balance = calculateBill(fRead, sRead)
-            print("Your balance is $%.2f." % balance)
+            print("\nYour balance is $%.2f." % balance)
         list_customers[customerID] = balance
     elif commandInput in 'e' or commandInput in 'E':
         exit()
