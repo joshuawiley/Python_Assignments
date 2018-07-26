@@ -5,15 +5,15 @@
 # greater then the second reading
 
 
-def valid_reading(first_reading, second_reading):
-    while first_reading >= second_reading:
+def valid_reading(first_read, second_read):
+    while first_read >= second_read:
         print("First input cannot be the same as the second!\n")
-        first_reading = float(input("Enter Your Beginning of Month KwH Used: "))
-        print(first_reading)
-        second_reading = float(input("Enter Your End of Month KwH Used: "))
-        print(second_reading)
+        first_read = float(input("Enter Your Beginning of Month KwH Used: "))
+        print(first_read)
+        second_read = float(input("Enter Your End of Month KwH Used: "))
+        print(second_read)
 
-    return True, first_reading, second_reading
+    return True, first_read, second_read
 
 
 # Calculate the Monthly bill
@@ -73,7 +73,7 @@ while True:
         CUSTOMER_ID = input("Enter your 4 digit customer ID: ")
         print(CUSTOMER_ID)
         del LIST_CUSTOMERS[CUSTOMER_ID]
-        print("\nCustomer %s has been removed from the database." % CUSTOMER_ID)
+        print("Customer %s has been removed from the database." % CUSTOMER_ID)
     elif COMMANDINPUT in 'u' or COMMANDINPUT in 'U':
         # Enter current
         CUSTOMER_ID = input("Enter your current ID: ")
