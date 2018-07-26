@@ -5,22 +5,22 @@
 # greater then the second reading
 
 
-def validReading(FirstReading, SecondReading):
-    while FirstReading >= SecondReading:
+def valid_reading(first_reading, second_reading):
+    while first_reading >= second_reading:
         print("First input cannot be the same as the second!\n")
-        FirstReading = float(input("Enter Your Beginning of Month KwH Used: "))
-        print(FirstReading)
-        SecondReading = float(input("Enter Your End of Month KwH Used: "))
-        print(SecondReading)
+        first_reading = float(input("Enter Your Beginning of Month KwH Used: "))
+        print(first_reading)
+        second_reading = float(input("Enter Your End of Month KwH Used: "))
+        print(second_reading)
 
-    return True, FirstReading, SecondReading
+    return True, first_reading, second_reading
 
 
 # Calculate the Monthly bill
-def calculateBill(firstReading, secondReading):
+def calculate_bill(reading_one, reading_two):
     # RATE1, RATE2, RATE3 = 0.08, 0.11, 0.15
 
-    kwh = float(secondReading - firstReading)
+    kwh = float(reading_two - reading_one)
 
     if kwh < 500:
         rate = 0.08
@@ -37,7 +37,7 @@ def calculateBill(firstReading, secondReading):
 
 
 # Main
-list_customers = {}
+LIST_CUSTOMERS = {}
 while True:
     print("\nN/n = New User")
     print("L/l = Lookup User")
@@ -46,62 +46,61 @@ while True:
     print("A/a = Add New Bill")
     print("E/e = Exit\n")
 
-    commandInput = input("\nEnter a command: ")
-    print(commandInput)
-    if commandInput in 'n' or commandInput in 'N':
-        customerID = input("\nEnter your 4 digit customer ID: ")
-        print(customerID)
-        fRead = float(input("Enter Your Beginning of Month KwH Used: "))
-        print(fRead)
-        sRead = float(input("Enter Your End of Month KwH Used: "))
-        print(sRead)
+    COMMANDINPUT = input("\nEnter a command: ")
+    print(COMMANDINPUT)
+    if COMMANDINPUT in 'n' or COMMANDINPUT in 'N':
+        CUSTOMER_ID = input("\nEnter your 4 digit customer ID: ")
+        print(CUSTOMER_ID)
+        F_READ = float(input("Enter Your Beginning of Month KwH Used: "))
+        print(F_READ)
+        S_READ = float(input("Enter Your End of Month KwH Used: "))
+        print(S_READ)
 
         # Return values
-        valid, fRead, sRead = validReading(fRead, sRead)
+        VALID, F_READ, S_READ = valid_reading(F_READ, S_READ)
 
-        if valid is True:
-            balance = float(calculateBill(fRead, sRead))
-            print("\nYour balance is $%.2f." % balance)
-        list_customers[customerID] = balance
-    elif commandInput in 'l' or commandInput in 'L':
-        customerID = input("\nEnter your 4 digit customer ID: ")
-        print(customerID)
-        if customerID not in list_customers:
-            print("\nThe Customer ID %s is not in the database." % customerID)
+        if VALID is True:
+            BALANCE = float(calculate_bill(F_READ, S_READ))
+            print("\nYour balance is $%.2f." % BALANCE)
+        LIST_CUSTOMERS[CUSTOMER_ID] = BALANCE
+    elif COMMANDINPUT in 'l' or COMMANDINPUT in 'L':
+        CUSTOMER_ID = input("\nEnter your 4 digit customer ID: ")
+        print(CUSTOMER_ID)
+        if CUSTOMER_ID not in LIST_CUSTOMERS:
+            print("\nThe Customer ID %s is not in the database." % CUSTOMER_ID)
         else:
-            for customerID in list_customers:
-                print(list_customers[customerID])
-    elif commandInput in 'd' or commandInput in 'D':
-        customerID = input("Enter your 4 digit customer ID: ")
-        print(customerID)
-        del list_customers[customerID]
-        print("\nCustomer %s has been removed from the database." % customerID)
-    elif commandInput in 'u' or commandInput in 'U':
+            print(LIST_CUSTOMERS[CUSTOMER_ID])
+    elif COMMANDINPUT in 'd' or COMMANDINPUT in 'D':
+        CUSTOMER_ID = input("Enter your 4 digit customer ID: ")
+        print(CUSTOMER_ID)
+        del LIST_CUSTOMERS[CUSTOMER_ID]
+        print("\nCustomer %s has been removed from the database." % CUSTOMER_ID)
+    elif COMMANDINPUT in 'u' or COMMANDINPUT in 'U':
         # Enter current
-        customerID = input("Enter your current ID: ")
-        print(customerID)
+        CUSTOMER_ID = input("Enter your current ID: ")
+        print(CUSTOMER_ID)
         # Create a temp ID to store original ID
-        temp = customerID
+        TEMP = CUSTOMER_ID
         # Get new ID
-        customerID = input("Enter your new ID: ")
-        print(customerID)
+        CUSTOMER_ID = input("Enter your new ID: ")
+        print(CUSTOMER_ID)
         # Set the new ID with the old ID's value
-        list_customers[customerID] = list_customers[temp]
+        LIST_CUSTOMERS[CUSTOMER_ID] = LIST_CUSTOMERS[TEMP]
         # Delete the old ID
-        del list_customers[temp]
-        print("\nCustomer ID %s has been updated to %s." % (temp, customerID))
-    elif commandInput in 'a' or commandInput in 'A':
-        customerID = input("Enter your 4 digit customer ID: ")
-        print(customerID)
-        fRead = float(input("Enter Your New Beginning of Month KwH Used: "))
-        print(fRead)
-        sRead = float(input("Enter Your New End of Month KwH Used: "))
-        print(sRead)
+        del LIST_CUSTOMERS[TEMP]
+        print("\nCustomer ID %s has been updated to %s." % (TEMP, CUSTOMER_ID))
+    elif COMMANDINPUT in 'a' or COMMANDINPUT in 'A':
+        CUSTOMER_ID = input("Enter your 4 digit customer ID: ")
+        print(CUSTOMER_ID)
+        F_READ = float(input("Enter Your New Beginning of Month KwH Used: "))
+        print(F_READ)
+        S_READ = float(input("Enter Your New End of Month KwH Used: "))
+        print(S_READ)
 
         # Return values
-        if valid is True:
-            balance = calculateBill(fRead, sRead)
-            print("Your balance is $%.2f." % balance)
-        list_customers[customerID] = balance
-    elif commandInput in 'e' or commandInput in 'E':
+        if VALID is True:
+            BALANCE = calculate_bill(F_READ, S_READ)
+            print("Your balance is $%.2f." % BALANCE)
+        LIST_CUSTOMERS[CUSTOMER_ID] = BALANCE
+    elif COMMANDINPUT in 'e' or COMMANDINPUT in 'E':
         exit()
